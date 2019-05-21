@@ -104,36 +104,28 @@ sap.ui.define(
             {
               inputStream: {
                 type: "LiveStream",
-                target: oTarget,
                 constraints: {
-                  width: {
-                    min: 640
-                  },
-                  height: {
-                    min: 480
-                  },
-                  facingMode: "environment"
-                },
-                debug: {
-                  drawBoundingBox: true
+                  width: { min: 640 },
+                  height: { min: 480 },
+                  facingMode: "environment",
+                  aspectRatio: { min: 1, max: 2 }
                 }
               },
-              locate: true,
               locator: {
                 patchSize: "medium",
                 halfSample: true
               },
-              numOfWorkers: 4,
+              numOfWorkers: 2,
               frequency: 10,
               decoder: {
-                readers: ["code_128_reader"],
-                debug: {
-                  drawBoundingBox: true,
-                  showFrequency: true,
-                  drawScanline: true,
-                  showPattern: true
-                }
-              }
+                readers: [
+                  {
+                    format: "code_128_reader",
+                    config: {}
+                  }
+                ]
+              },
+              locate: true
             },
             function(error) {
               if (error) {
