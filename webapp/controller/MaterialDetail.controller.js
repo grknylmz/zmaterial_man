@@ -113,6 +113,9 @@ sap.ui.define(
                     min: 480
                   },
                   facingMode: "environment"
+                },
+                debug: {
+                  drawBoundingBox: true
                 }
               },
               locate: true,
@@ -120,10 +123,10 @@ sap.ui.define(
                 patchSize: "medium",
                 halfSample: true
               },
-              numOfWorkers: 2,
+              numOfWorkers: 4,
               frequency: 10,
               decoder: {
-                readers: ["ean_13"],
+                readers: ["code_128_reader"],
                 debug: {
                   drawBoundingBox: true,
                   showFrequency: true,
@@ -145,16 +148,15 @@ sap.ui.define(
             // Attach event handlers...
             Quagga.onProcessed(
               function(result) {
-                var drawingCtx = Quagga.canvas.ctx.overlay,
-                  drawingCanvas = Quagga.canvas.dom.overlay;
-
+                const drawingCtx = Quagga.canvas.ctx.overlay;
+                const drawingCanvas = Quagga.canvas.dom.overlay;
                 if (result) {
                   if (result.boxes) {
                     drawingCtx.clearRect(
                       0,
                       0,
-                      parseInt(drawingCanvas.getAttribute("width")),
-                      parseInt(drawingCanvas.getAttribute("height"))
+                      parseInt(drawingCanvas.getAttribute("width"), 10),
+                      parseInt(drawingCanvas.getAttribute("height"), 10)
                     );
                     result.boxes
                       .filter(function(box) {
