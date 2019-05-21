@@ -104,11 +104,15 @@ sap.ui.define(
             {
               inputStream: {
                 type: "LiveStream",
+                target: oTarget,
                 constraints: {
-                  width: { min: 640 },
-                  height: { min: 480 },
-                  facingMode: "environment",
-                  aspectRatio: { min: 1, max: 2 }
+                  width: {
+                    min: 640
+                  },
+                  height: {
+                    min: 480
+                  },
+                  facingMode: "environment"
                 }
               },
               locator: {
@@ -119,10 +123,11 @@ sap.ui.define(
               frequency: 10,
               decoder: {
                 readers: [
-                  {
-                    format: "code_128_reader",
-                    config: {}
-                  }
+                  "code_128_reader",
+                  "ean_reader",
+                  "ean_8_reader",
+                  "code_39_reader",
+                  "upc_reader"
                 ]
               },
               locate: true
