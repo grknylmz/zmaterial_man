@@ -142,6 +142,8 @@ sap.ui.define(
               function(result) {
                 const drawingCtx = Quagga.canvas.ctx.overlay;
                 const drawingCanvas = Quagga.canvas.dom.overlay;
+                // drawingCanvas.style.display = 'none';
+
                 if (result) {
                   if (result.boxes) {
                     drawingCtx.clearRect(
@@ -151,10 +153,10 @@ sap.ui.define(
                       parseInt(drawingCanvas.getAttribute("height"), 10)
                     );
                     result.boxes
-                      .filter(function(box) {
+                      .filter(box => {
                         return box !== result.box;
                       })
-                      .forEach(function(box) {
+                      .forEach(box => {
                         Quagga.ImageDebug.drawPath(
                           box,
                           { x: 0, y: 1 },
