@@ -118,13 +118,12 @@ sap.ui.define(
               numOfWorkers: 2,
               frequency: 10,
               decoder: {
-                readers: ["ean_reader", "code_128_reader"]
-              },
-              debug: {
-                drawBoundingBox: true,
-                showFrequency: true,
-                drawScanline: true,
-                showPattern: true
+                readers: [
+                  {
+                    format: "code_128_reader",
+                    config: {}
+                  }
+                ]
               },
               locate: true
             },
