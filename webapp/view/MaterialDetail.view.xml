@@ -1,0 +1,37 @@
+<mvc:View controllerName="gqsystema.zmaterial_man.controller.MaterialDetail" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" 
+	xmlns="sap.m" 
+	xmlns:l="sap.ui.layout">
+	<Page title="{i18n>appTitle}">
+		<content>
+			<l:VerticalLayout id="containerLayout" width="100%">
+				<l:BlockLayout id="BlockLayout" background="{/selectedBackground}">
+					<l:BlockLayoutRow>
+						<l:BlockLayoutCell width="1" title="{i18n>enterDetails}">
+							<Input id="scannedValue" placeholder="{= ${device>/barcodeScanEnabled} ? ${i18n>useScan} : ${i18n>enterManual} }" editable="{= !${device>/barcodeScanEnabled} }" value="{inputModel>/materialNumber}"/>
+							<Toolbar>
+								<Button icon="sap-icon://bar-code" text="{i18n>scan}" tooltip="{i18n>scan}" visible="{device>/barcodeScanEnabled}" press="onScanForValue" />
+								<ToolbarSpacer/>
+								<Button icon="sap-icon://search" text="{i18n>search}" tooltip="{i18n>search}" visible="{device>/barcodeScanEnabled}" press="onSearch" />
+							</Toolbar>
+						</l:BlockLayoutCell>
+						<l:BlockLayoutCell width="1" title="{i18n>materialDetails}">
+							<l:VerticalLayout class="sapUiContentPadding">
+								<Text text="{i18n>materialNumber}"/>
+								<Text id="materialNumber" text="{materialModel>/Matnr}"/>
+								<Text text="{i18n>materialDescription}"/>
+								<Text id="materialDescription" text="{materialModel>/Maktx}"/>
+								<Text text="{i18n>materialStorage}"/>
+								<Text id="materialStorage" text="{materialModel>/Lgpbe}"/>
+								<Text text="{i18n>materialStock}"/>
+								<Text id="materialStock" text="{materialModel>/Labst}"/>
+								<Image id="image" src="{materialModel>/ImgUrl}" />
+							</l:VerticalLayout>
+						</l:BlockLayoutCell>
+					</l:BlockLayoutRow>
+				</l:BlockLayout>
+			</l:VerticalLayout>
+		</content>
+	</Page>
+</mvc:View>
