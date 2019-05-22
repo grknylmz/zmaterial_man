@@ -15,7 +15,7 @@
     },
     "dataSources": {
       "materialService": {
-        "uri": "http://srvsaptsd.pickenpackseafoods.com:8100/sap/opu/odata/sap/zmaterial_master_srv",
+        "uri": "/sap/opu/odata/sap/zmaterial_master_srv",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0"
@@ -68,14 +68,12 @@
           "bundleName": "gqsystema.zmaterial_man.i18n.i18n"
         }
       },
-      "materialModel": {
+      "": {
         "type": "sap.ui.model.odata.v2.ODataModel",
         "settings": {
           "defaultOperationMode": "Server",
           "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Request",
-          "user": "DEVELOPER",
-          "password": "$PPS!16"
+          "defaultCountMode": "Request"
         },
         "dataSource": "materialService",
         "preload": true

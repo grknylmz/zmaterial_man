@@ -17,16 +17,16 @@
 							</Toolbar>
 						</l:BlockLayoutCell>
 						<l:BlockLayoutCell width="1" title="{i18n>materialDetails}">
-							<l:VerticalLayout class="sapUiContentPadding">
+							<l:VerticalLayout id="bindingLayout" class="sapUiContentPadding">
 								<Text text="{i18n>materialNumber}"/>
-								<Text id="materialNumber" text="{materialModel>/Matnr}"/>
+								<Text id="materialNumber" text="{Matnr}"/>
 								<Text text="{i18n>materialDescription}"/>
-								<Text id="materialDescription" text="{materialModel>/Maktx}"/>
+								<Text id="materialDescription" text="{Maktx}"/>
 								<Text text="{i18n>materialStorage}"/>
-								<Text id="materialStorage" text="{materialModel>/Lgpbe}"/>
+								<Text id="materialStorage" text="{Lgpbe}"/>
 								<Text text="{i18n>materialStock}"/>
-								<Text id="materialStock" text="{materialModel>/Labst}"/>
-								<Image id="image" src="{materialModel>/ImgUrl}" />
+								<Text id="materialStock" text="{Labst}"/>
+								<Image id="image" src="{ImgUrl}" />
 							</l:VerticalLayout>
 						</l:BlockLayoutCell>
 					</l:BlockLayoutRow>
