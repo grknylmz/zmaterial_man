@@ -15,7 +15,7 @@
     },
     "dataSources": {
       "materialService": {
-        "uri": "/sap/opu/odata/sap/zmaterial_master_srv",
+        "uri": "http://srvsaptsd.pickenpackseafoods.com:8100/sap/opu/odata/sap/zmaterial_master_srv",
         "type": "OData",
         "settings": {
           "odataVersion": "2.0"
@@ -73,7 +73,9 @@
         "settings": {
           "defaultOperationMode": "Server",
           "defaultBindingMode": "TwoWay",
-          "defaultCountMode": "Request"
+          "defaultCountMode": "Request",
+          "user": "DEVELOPER",
+          "password": "$PPS!16"
         },
         "dataSource": "materialService",
         "preload": true

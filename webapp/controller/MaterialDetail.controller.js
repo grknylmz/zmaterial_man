@@ -31,7 +31,29 @@ sap.ui.define(
             var oBusyIndicator = new BusyIndicator();
             oBusyIndicator.show();
             var reqUrl = Constants.MaterialSet + "('" + val + "')";
-            that.backendService.readEntity(reqUrl, null, null);
+            debugger;
+            that.backendLogic
+              .readEntity(reqUrl, null, null)
+              .then(
+                function(data, fullfil) {
+                  this.getModel(Constants.MATERIAL_MODEL).setData(data);
+                }.bind(this)
+              )
+              .catch(
+                function(error) {
+                  MessageBox.error(error, {
+                    title: this.getResourceBundle().getText(
+                      "General.BackendErrorOccured.title"
+                    ),
+                    styleClass: this.getStyleClass(),
+                    actions: [MessageBox.Action.CLOSE]
+                  });
+                  // create the views based on the url/hash
+                  //this line is moved here in order to reassure that the customizing data is retrieved for the backend as it is necessary for all screens.
+                  //this approach is chosen in order to avoid retrieving the same data in each controller
+                  this.getRouter().initialize();
+                }.bind(this)
+              );
           } else {
             var msg = this.getModel("i18n")
               .getResourceBundle()
