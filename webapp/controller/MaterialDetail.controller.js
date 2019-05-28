@@ -35,11 +35,17 @@ sap.ui.define(
             that._dialog.open();
             var reqUrl = Constants.MATERIAL_SET + "('" + val + "')";
 
-            that.backendService.readEntity(reqUrl, null, null).then(data => {
-              that._dialog.close();
-              var layout = this.byId("bindingLayout");
-              layout.bindElement(reqUrl);
-            });
+            try {
+              that.backendService
+                .readEntity(reqUrl, null, null)
+                .then(data => {
+                  that.data = data;
+                  that._dialog.close();
+                  var layout = this.byId("bindingLayout");
+                  layout.bindElement(reqUrl);
+                })
+                .catch(error => console.log("EROL!!"));
+            } catch (error) {}
           } else {
             var msg = this.getModel("i18n")
               .getResourceBundle()
