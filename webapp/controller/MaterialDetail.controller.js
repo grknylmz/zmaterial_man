@@ -136,13 +136,7 @@ sap.ui.define(
               numOfWorkers: 2,
               frequency: 10,
               decoder: {
-                readers: [
-                  "code_128_reader",
-                  "ean_reader",
-                  "ean_8_reader",
-                  "code_39_reader",
-                  "upc_reader"
-                ]
+                readers: ["code_128_reader"]
               },
               locate: true
             },
