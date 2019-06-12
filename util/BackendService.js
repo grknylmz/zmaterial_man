@@ -16,7 +16,6 @@ sap.ui.define(["sap/ui/base/Object"], function(UI5Object) {
       return new Promise(
         function(resolve, reject) {
           var entitySet = entityName;
-          debugger;
           this._model.read(entitySet, {
             urlParameters: urlParameters,
             filters: filter,

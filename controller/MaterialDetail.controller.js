@@ -28,13 +28,43 @@ sap.ui.define(
         },
 
         onSearch: function() {
+          var bindingLayout = this.byId("bindingLayout");
+
+          var errMsg = this.getModel("i18n")
+            .getResourceBundle()
+            .getText("connectionError");
+
           var val = this.getView()
             .byId("scannedValue")
             .getProperty("value");
+
           if (val) {
             that._dialog.open();
             var reqUrl = Constants.MATERIAL_SET + "('" + val + "')";
+            var metadata = that.matModel.getServiceMetadata();
+            if (metadata === undefined) {
+              that._dialog.close();
+              MessageToast.show(errMsg);
+              return;
+            } else {
+              that.matModel.read(reqUrl, {
+                urlParameters: null,
+                filters: null,
+                success: function(data) {
+                  that.data = data;
+                  bindingLayout.bindElement(reqUrl);
+                  that._dialog.close();
+                  return;
+                },
+                error: function(error) {
+                  that._dialog.close();
+                  MessageToast.show(error.message);
+                  return;
+                }
+              });
+            }
 
+            /*
             try {
               that.backendService
                 .readEntity(reqUrl, null, null)
@@ -45,7 +75,7 @@ sap.ui.define(
                   layout.bindElement(reqUrl);
                 })
                 .catch(error => console.log("EROL!!"));
-            } catch (error) {}
+            } catch (error) {} */
           } else {
             var msg = this.getModel("i18n")
               .getResourceBundle()
