@@ -25,8 +25,8 @@
 								<Text text="{i18n>materialStorage}"/>
 								<Text id="materialStorage" text="{Lgpbe}"/>
 								<Text text="{i18n>materialStock}"/>
-								<Text id="materialStock" text="{Labst}"/>
-								<Image id="image" src="{ImgUrl}" />
+								<Text id="materialStock" text="{LabstPlain}"/>
+								<Image id="image" src="{ImgUrl}" width="100%"/>
 							</l:VerticalLayout>
 						</l:BlockLayoutCell>
 					</l:BlockLayoutRow>
