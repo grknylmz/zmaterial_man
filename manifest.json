@@ -87,7 +87,7 @@
 			],
 			"js": [
 				{
-					"uri": "libs/quagga.min.js",
+					"uri": "libs/quagga.js",
 					"async": true
 				}
 			]
